@@ -1,0 +1,112 @@
+<div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
+    <div class="panel panel-default">
+    <div class="panel-heading">
+        <strong>  Cadastre-se. É grátis. </strong>  
+    </div>
+    <div class="panel-body">
+        <?= $this->Flash->render() ?>
+        <?= $this->Form->create($user) ?>
+
+        <legend>Dados Pessoais</legend>
+        <div class="form-group input-group">
+            <span class="input-group-addon"><i class="fa fa-user"  ></i></span>
+            <?= $this->Form->input('name', ['label' => false, 'div' => false, 'class' => 'form-control', 'placeholder' => 'Nome Completo']); ?>
+        </div>
+
+        <div class="form-group input-group">
+            <span class="input-group-addon"><i class="fa fa-calendar"  ></i></span>
+            <?= $this->Form->input('bithday', ['label' => false, 'type' => 'text', 'div' => false, 'class' => 'date form-control','placeholder' => 'Data de Nascimento']); ?>
+        </div>
+
+        <div class="form-group input-group">
+            <span class="input-group-addon"><i class="fa fa-phone"  ></i></span>
+            <?= $this->Form->input('cellphone', ['label' => false, 'type' => 'text', 'div' => false, 'class' => 'cell form-control','placeholder' => 'Celular']); ?>
+        </div>
+
+        <div class="form-group input-group">
+            <span class="input-group-addon"><i class="fa fa-phone"  ></i></span>
+            <?= $this->Form->input('phone', ['label' => false, 'type' => 'text', 'div' => false, 'class' => 'phone form-control','placeholder' => 'Telefone']); ?>
+        </div>
+        <legend>Dados Médicos</legend>
+        <div class="form-group input-group">
+            <span class="input-group-addon"><i class="fa fa-credit-card" ></i></span>
+            <?= $this->Form->input('number_sus', ['label' => false, 'type' => 'text', 'div' => false, 'class' => 'cns form-control','placeholder' => 'N° Cartão SUS']); ?>
+        </div>
+
+        <div class="form-group input-group">
+            <span class="input-group-addon"><i class="fa fa-female"  ></i></span>
+            <?= $this->Form->input('mother_name', ['label' => false, 'type' => 'text', 'div' => false, 'class' => 'form-control','placeholder' => 'Nome da Mãe']); ?>
+        </div>
+
+        <div class="form-group input-group">
+            <?php echo $this->Form->input('unknown_mother', ['label' => "Mãe desconhecida", 'div' => false, 'class' => '']); ?>
+        </div>
+
+        <div class="form-group">
+            <label>Responsável Familiar?</label>
+            <?= $this->Form->input('responsible_familiar', ['label' => false, 'div' => false, 'class' => 'form-control', 'options' => $responsible, 'empty' => 'Selecione']); ?>
+        </div>
+
+        <div class="form-group input-group">
+            <span class="input-group-addon"><i class="fa fa-credit-card"  ></i></span>
+            <?= $this->Form->input('responsible_number_sus', ['label' => false, 'div' => false, 'class' => 'cns form-control','placeholder' => 'N° Cartão SUS Responsável']); ?>
+        </div>
+        <legend>Dados Sociais</legend>
+        <div class="form-group">
+            <label>Sexo</label>
+            <div class="radio">
+                <label>
+                    <input type="radio" value="M" id="" name="gender">Masculino
+                </label>
+                <label>
+                    <input type="radio" value="F" id="" name="gender">Feminino
+                </label>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label>Orientação Sexual</label>
+            <?= $this->Form->input('sexual_orientation', ['label' => false, 'div' => false, 'class' => 'form-control', 'options' => $sexual_orientation, 'empty' => 'Selecione']); ?>
+        </div>
+
+        <div class="form-group">
+            <label>Cor/Raça</label>
+            <?= $this->Form->input('breed', ['label' => false, 'div' => false, 'class' => 'form-control', 'options' => $breed, 'empty' => 'Selecione']); ?>
+        </div>
+
+        <div class="form-group input-group">
+            <?php echo $this->Form->input('deficiency', ['label' => "Possui deficiência?", 'div' => false, 'class' => '']); ?>
+        </div>
+
+        <div class="form-group">
+            <label>Tipo de Deficiência</label>
+            <?= $this->Form->input('deficiency_type', ['label' => false, 'div' => false, 'class' => 'form-control', 'options' => $deficiency_type, 'empty' => 'Selecione']); ?>
+        </div>
+        <legend>Dados de Acesso</legend>
+        <div class="form-group input-group">
+            <span class="input-group-addon"><i class="fa fa-envelope-o"  ></i></span>
+            <?= $this->Form->input('username', ['label' => false, 'type' => 'email', 'div' => false, 'class' => 'form-control','placeholder' => 'Email', 'data-validation' => 'email']); ?>
+        </div>
+
+        <div class="form-group input-group">
+            <span class="input-group-addon"><i class="fa fa-key"  ></i></span>
+            <?= $this->Form->input('password', ['label' => false, 'type' => 'password', 'div' => false, 'class' => 'form-control','placeholder' => 'Senha']); ?>
+        </div>
+        <div class="form-group">
+        <?= $this->Html->link('Login',['controller' => 'Users', 'action' => 'login', '_full' => true]); ?>
+        <?= $this->Form->button(__('Cadastrar'), ['class' => 'btn btn-danger','style' => 'float: right;']) ?>
+        </div>
+        <?= $this->Form->end() ?>
+        
+    </div>
+
+    </div>
+</div>
+
+
+
+<?= $this->Html->script('mask.js'); ?>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.23/theme-default.min.css" type="text/css"/>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.2.43/jquery.form-validator.min.js"></script>

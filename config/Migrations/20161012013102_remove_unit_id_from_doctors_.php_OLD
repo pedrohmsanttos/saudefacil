@@ -1,0 +1,13 @@
+<?php
+
+use Phinx\Migration\AbstractMigration;
+
+class RemoveUnitIdFromDoctors extends AbstractMigration
+{
+  public function up(){
+      $table = $this->table('doctors');
+      $table->dropForeignKey('unit_id')
+            ->remove('unit_id')
+            ->save();
+  }
+}
